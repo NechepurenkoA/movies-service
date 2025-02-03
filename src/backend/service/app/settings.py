@@ -19,6 +19,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
+    "django_filters",
+    "actors.apps.ActorsConfig",
+    "directors.apps.DirectorsConfig",
+    "movies.apps.MoviesConfig",
+    "users.apps.UsersConfig",
+    "reviews.apps.ReviewsConfig",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -99,3 +107,19 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+API_V1_PREFIX = "v1"
+
+REST_FRAMEWORK = {
+    "TEST_REQUEST_DEFAULT_FORMAT": "json",
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Movies Micro Service",
+    "DESCRIPTION": "Дипломная работа",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SCHEMA_PATH_PREFIX": "/api/v1",
+}
