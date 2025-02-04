@@ -1,6 +1,7 @@
-from actors.models import Actor
 from django.contrib import admin
-from inlines import ActorMovieInLine
+
+from actors.models import Actor
+from movies.inlines import ActorMovieInLine
 
 
 class ActorAdmin(admin.ModelAdmin):

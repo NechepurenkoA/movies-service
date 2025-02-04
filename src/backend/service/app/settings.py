@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     "actors.apps.ActorsConfig",
     "directors.apps.DirectorsConfig",
     "movies.apps.MoviesConfig",
-    "users.apps.UsersConfig",
+    "profiles.apps.ProfilesConfig",
     "reviews.apps.ReviewsConfig",
     "drf_spectacular",
 ]

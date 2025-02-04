@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django.db.models import Avg
-from inlines import ActorMovieInLine, DirectorMovieInLine, ReviewInLine
+
+from movies.inlines import ActorMovieInLine, DirectorMovieInLine
 from movies.models import Movie
+from reviews.inlines import ReviewInLine
 
 
 # TODO: Add avg grade (works, should be tested more?)
@@ -13,8 +15,11 @@ class MovieAdmin(admin.ModelAdmin):
         "title",
         "description",
         "get_directors",
-        "average_rating_display",
+        "get_average_rating",
         "id",
+    ]
+    readonly_fields = [
+        "slug",
     ]
     empty_value_display = "N/A"
 
@@ -41,11 +46,12 @@ class MovieAdmin(admin.ModelAdmin):
 
     get_directors.short_description = "Directors"
 
-    def average_rating_display(self, obj):
+    def get_average_rating(self, obj):
         # Возвращаем округленное значение или "N/A" если оценка отсутствует
         return obj.average_rating
 
-    average_rating_display.short_description = "Average Rating"
+    get_average_rating.admin_order_field = "average_rating"
+    get_average_rating.short_description = "Average Rating"
 
 
 admin.site.register(Movie, MovieAdmin)
