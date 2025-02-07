@@ -15,6 +15,11 @@ class DirectorAbstract(models.Model):
 
     class Meta:
         abstract = True
+        unique_together = (
+            "first_name",
+            "second_name",
+            "last_name",
+        )
 
 
 class Director(DirectorAbstract):

@@ -16,6 +16,12 @@ class Movie(models.Model):
         COMEDY = "comedy", _("Comedy")
         ACTION = "action", _("Action")
         SCI_FI = "sci-fi", _("Sci-Fi")
+        DRAMA = "drama", _("Drama")
+        ADVENTURE = "adventure", _("Adventure")
+        FANTASY = "fantasy", _("Fantasy")
+        HISTORICAL = "historical", _("Historical")
+        NOIR = "noir", _("Noir")
+        THRILLER = "thriller", _("Thriller")
 
     image = models.ImageField(
         verbose_name="Image",
@@ -28,7 +34,7 @@ class Movie(models.Model):
     )
     release_date = models.DateField(blank=False)
     slug = models.SlugField(max_length=75, unique=True)
-    counrty = models.CharField(
+    country = models.CharField(
         verbose_name="Country",
         max_length=25,
         blank=False,
@@ -82,7 +88,10 @@ class MovieDirector(models.Model):
         related_name="directors",
     )
     director = models.ForeignKey(
-        Director, on_delete=models.SET_DEFAULT, default="Unknown", related_name="movies"
+        Director,
+        on_delete=models.SET_DEFAULT,
+        default="Unknown",
+        related_name="movies",
     )
 
     class Meta:

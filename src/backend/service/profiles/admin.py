@@ -22,6 +22,9 @@ class TelegramUserAdmin(admin.ModelAdmin):
         model = TelegramUser
         fields = ["telegram_id", "join_date"]
 
+    def get_queryset(self, request):
+        return TelegramUser.objects.all().select_related("profile")
+
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ["telegram_account__telegram_id", "username", "id"]
@@ -31,6 +34,9 @@ class ProfileAdmin(admin.ModelAdmin):
     class Meta:
         model = TelegramUser
         fields = ["username", "telegram_account"]
+
+    def get_queryset(self, request):
+        return Profile.objects.all().select_related("telegram_account")
 
 
 admin.site.register(TelegramUser, TelegramUserAdmin)

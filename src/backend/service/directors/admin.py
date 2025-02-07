@@ -19,5 +19,8 @@ class DirectorAdmin(admin.ModelAdmin):
         model = Director
         fields = ["last_name", "first_name", "second_name"]
 
+    def get_queryset(self, request):
+        return super().get_queryset(request)
+
 
 admin.site.register(Director, DirectorAdmin)

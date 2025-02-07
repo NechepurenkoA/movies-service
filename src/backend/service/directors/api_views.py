@@ -1,4 +1,4 @@
-from rest_framework import mixins, pagination, viewsets
+from rest_framework import mixins, viewsets
 
 from directors.models import Director
 from directors.serializers import DirectorSerializer
@@ -13,8 +13,7 @@ class AbstractViewSet(
 ):
     """Abstract class for Directors, Actors and Movies models"""
 
-    # permission_classes = IsBotOrAdmin
-    pagination_class = pagination.PageNumberPagination
+    pass
 
 
 class DirectorViewSet(AbstractViewSet):

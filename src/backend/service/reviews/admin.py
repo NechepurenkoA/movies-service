@@ -16,5 +16,8 @@ class ReviewAdmin(admin.ModelAdmin):
     def get_username(self, obj):
         return obj.author.profile.username
 
+    def get_queryset(self, request):
+        return Review.objects.all().select_related("author__profile", "movie")
+
 
 admin.site.register(Review, ReviewAdmin)

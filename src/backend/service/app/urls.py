@@ -1,5 +1,3 @@
-import os
-
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -20,6 +18,7 @@ urlpatterns = [
     path("api/", include("directors.urls")),
     path("api/", include("actors.urls")),
     path("api/", include("movies.urls")),
+    path("api/", include("reviews.urls")),
     path("schema/", SpectacularAPIView.as_view(), name="schema"),
     path(
         "swagger/",
@@ -33,5 +32,10 @@ urlpatterns = [
     ),
 ]
 
-if os.getenv("DEBUG") == "True":
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns += (
+        static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+        + debug_toolbar.toolbar.debug_toolbar_urls()
+    )

@@ -20,6 +20,9 @@ class ActorAdmin(admin.ModelAdmin):
         model = Actor
         fields = ["last_name", "first_name", "second_name"]
 
+    def get_queryset(self, request):
+        return super().get_queryset(request).prefetch_related("movies__movie")
+
     def get_movies(self, obj):
         return [str(_.movie) for _ in obj.movies.all()]
 
