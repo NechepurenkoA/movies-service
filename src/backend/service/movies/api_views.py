@@ -24,7 +24,12 @@ class MovieViewSet(
         filters.SearchFilter,
         filters.OrderingFilter,
     ]
-    search_fields = ["slug", "title", "directors__director__last_name"]
+    search_fields = [
+        "slug",
+        "title",
+        "directors__director__last_name",
+        "genre",
+    ]
     ordering_fields = [
         "id",
         "average_grade",
