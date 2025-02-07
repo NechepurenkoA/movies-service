@@ -16,6 +16,7 @@ pillow = "^11.1.0"
 drf-extra-fields = "^3.7.0"
 aiogram = "^3.17.0"
 gunicorn = "^23.0.0"
+requests = "^2.32.3"
 
 
 [tool.poetry.group.dev.dependencies]

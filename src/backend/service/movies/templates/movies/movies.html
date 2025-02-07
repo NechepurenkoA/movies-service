@@ -1,0 +1,6 @@
+{% load static %}
+{% block static %} <link rel="stylesheet" href={% static "css/styles.css" %}> {% endblock static %}
+
+{% block content %}
+    {% include "movies/movie.html" %}
+{% endblock content %}

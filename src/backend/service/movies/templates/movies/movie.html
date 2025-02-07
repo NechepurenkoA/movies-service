@@ -1,0 +1,6 @@
+{% block content %}
+    {% for movie in data.results %}
+        <h3> {{ movie.title }} </h3>
+        <img src="{{ movie.image }}" class="img-rounded" alt="movie.title">
+    {% endfor %}
+{% endblock content %}

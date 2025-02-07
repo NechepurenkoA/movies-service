@@ -9,6 +9,8 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 
+from movies import views
+
 load_dotenv()
 
 
@@ -30,6 +32,7 @@ urlpatterns = [
         SpectacularRedocView.as_view(url_name="schema"),
         name="redoc",
     ),
+    path("movies/", views.movies_list, name="movies"),
 ]
 
 if settings.DEBUG:
