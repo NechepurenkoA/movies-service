@@ -1,0 +1,12 @@
+html, body {
+    height: 100%;
+}
+
+.link-offset-2 {
+    color: red;
+    text-decoration: none;
+}
+
+.link-offset-2:hover {
+    color: rgb(141, 18, 18);
+}

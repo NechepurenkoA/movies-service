@@ -1,0 +1,5 @@
+@media (min-width: 1200px) {
+    .content img {
+      max-width: 50%; /* Reduce image size on large screens */
+    }
+}

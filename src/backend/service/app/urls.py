@@ -9,10 +9,12 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 
-from movies import views
+from movies import views as movies_views
 
 load_dotenv()
 
+handler404 = "movies.views.error_404"
+handler500 = "movies.views.error_500"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -32,7 +34,9 @@ urlpatterns = [
         SpectacularRedocView.as_view(url_name="schema"),
         name="redoc",
     ),
-    path("movies/", views.movies_list, name="movies"),
+    path("movies/", movies_views.movies_list, name="movies"),
+    path("movies/<str:slug>", movies_views.movie_detail, name="movie-detail"),
+    path("", movies_views.index, name="index"),
 ]
 
 if settings.DEBUG:

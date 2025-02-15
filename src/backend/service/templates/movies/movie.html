@@ -1,0 +1,33 @@
+{% load static %}
+
+
+<div class="col-lg-4 d-flex">
+    <div class="card shadow-lg movie-card text-white rounded-3">
+        <div class="card-header">
+            <div>
+                <img id="movie-img-top" src="{{ movie.image }}" class="card-img-top img-fluid" alt=""
+                onerror="this.onerror=null;this.src='{% static "assets/images/fallback_image.png" %}';">
+            </div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">артикул: {{movie.slug}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">
+                {% for genre in movie.genre %} {{genre}} {% endfor %}
+            </h6>
+            <p class="card-text-center">{{ movie.description }}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between align-items-center">
+            <a href="{{request.path}}{{movie.slug}}" class="btn btn-m btn-block btn-primary text-center">
+                Подробнее
+            </a>
+            <span class="fs-5">
+                Рейтинг: {% if movie.average_grade %}
+                    {{ movie.average_grade }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>

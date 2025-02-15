@@ -1,0 +1,30 @@
+{% load custom_filters %}
+<nav class="mt-auto">
+    <ul class="pagination justify-content-center mt-auto">
+        {% if reviews.links.previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{reviews.page|subtract:1}}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+        {% for i in reviews.total_pages|get_range %}
+            {% if i == reviews.page %}
+                <li class="page-item active">
+                    <a class="page-link" href="?page={{i}}"> {{i}} </a>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{i}}"> {{i}} </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% if reviews.links.next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{reviews.page|add:1}}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>

@@ -46,10 +46,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "app.urls"
 
+TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [TEMPLATES_DIR],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -58,6 +59,9 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
+            "libraries": {
+                "custom_filters": "templatetags.custom_filters",
+            },
         },
     },
 ]
@@ -107,7 +111,8 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = MEDIA_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles")]
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
@@ -118,8 +123,8 @@ API_V1_PREFIX = "v1"
 REST_FRAMEWORK = {
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
-    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 5,
+    "DEFAULT_PAGINATION_CLASS": "app.pagination.DefaultResultsSetPagination",
+    "PAGE_SIZE": 6,
 }
 
 SPECTACULAR_SETTINGS = {

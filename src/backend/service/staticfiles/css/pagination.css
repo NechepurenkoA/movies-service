@@ -1,0 +1,22 @@
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #A12425;
+    border-color: #8d1b1b;
+}
+
+.page-link:hover {
+    background-color: #881616;
+    border-color: rgb(240, 109, 91, 0.1);
+    color: #fff;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    color: #e5e7eb;
+    text-decoration: none;
+    background-color: #2b3035;
+    border: 1px solid rgba(28, 30, 32, 0.671);
+    transition: color 0.15sease-in-out, background-color 0.15sease-in-out, border-color 0.15sease-in-out, box-shadow 0.15sease-in-out;
+}

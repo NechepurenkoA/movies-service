@@ -1,0 +1,8 @@
+{% load static %}
+
+<script>
+    function onError() {
+        this.onerror = null;
+        this.parentNode.children[0].srcset = this.parentNode.children[1].srcset = "{% static "assets/images/fallback_image.png" %}";
+    }
+</script>

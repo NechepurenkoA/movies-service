@@ -1,0 +1,30 @@
+{% load custom_filters %}
+<nav class="mt-auto">
+    <ul class="pagination justify-content-center">
+        {% if links.previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{page|subtract:1}}&page_size={{page_size}}{% if search %}&search={{search}}{% endif %}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+        {% for i in total_pages|get_range %}
+            {% if i == page %}
+                <li class="page-item active">
+                    <a class="page-link" href="?page={{i}}&page_size={{page_size}}{% if search %}&search={{search}}{% endif %}"> {{i}} </a>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{i}}&page_size={{page_size}}{% if search %}&search={{search}}{% endif %}"> {{i}} </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% if links.next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{page|add:1}}&page_size={{page_size}}{% if search %}&search={{search}}{% endif %}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>

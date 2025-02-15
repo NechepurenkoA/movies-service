@@ -56,8 +56,10 @@ class MovieViewSet(
         url_path="reviews",
     )
     def get_reviews(self, request, slug):
-        queryset = Review.objects.select_related("movie", "author__profile").filter(
-            movie__slug=slug
+        queryset = (
+            Review.objects.select_related("movie", "author__profile")
+            .filter(movie__slug=slug)
+            .order_by("add_date")
         )
         page = self.paginate_queryset(queryset)
         serializer = self.get_serializer(page, many=True)

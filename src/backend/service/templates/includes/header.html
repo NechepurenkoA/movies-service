@@ -1,0 +1,17 @@
+{% load static %}
+
+
+<header>
+  <nav class="navbar navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url "index" %}">
+        <img src="{% static "assets/images/header_icon.png" %}" alt="" width="40" height="30" class="d-inline-block">
+        Movies Reviews
+      </a>
+
+      {% if request.resolver_match.url_name == "movies" %}
+        {% include "includes/search_bar.html" %}
+      {% endif %}
+    </div>
+  </nav>
+</header>

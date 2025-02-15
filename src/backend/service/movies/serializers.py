@@ -12,7 +12,7 @@ class MovieRepresentationSerializer(serializers.ModelSerializer):
     image = Base64ImageField(required=False)
     actors = MovieActorRepresentationSerializer(many=True)
     directors = MovieDirectorRepresentationSerializer(many=True)
-    average_grade = serializers.IntegerField(read_only=True)
+    average_grade = serializers.FloatField(read_only=True)
 
     def get_reviews_amount(self, obj) -> int:
         return obj.reviews.count()

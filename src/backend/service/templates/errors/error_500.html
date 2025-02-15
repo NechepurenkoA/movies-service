@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href={% static "css/bootstrap.css" %}>
+    <link rel="stylesheet" href={% static "css/movie_styles.css" %}>
+    <link rel="stylesheet" href={% static "css/errors.css" %}>
+{% endblock static %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <img class="img-fluid h-800 w-80" src="{% static "assets/images/error_500.png" %}">
+    </div>
+{% endblock content %}

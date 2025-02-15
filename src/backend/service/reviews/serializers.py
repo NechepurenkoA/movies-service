@@ -65,15 +65,20 @@ class ReviewRepresentationSerializer(serializers.ModelSerializer):
 
     author = serializers.SerializerMethodField()
     movie_title = serializers.SerializerMethodField()
+    add_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M")
 
     class Meta:
         model = Review
         fields = [
             "id",
             "author",
+            "add_date",
             "movie_title",
             "text",
             "rating",
+        ]
+        read_only_fields = [
+            "add_date",
         ]
 
     def get_author(self, obj):
