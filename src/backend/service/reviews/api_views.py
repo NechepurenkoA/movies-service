@@ -19,7 +19,6 @@ class ReviewViewSet(
     queryset = Review.objects.all().select_related("movie", "author__profile")
     serializer_class = ReviewRepresentationSerializer
     http_method_names = [
-        HTTPMethod.GET.lower(),
         HTTPMethod.POST.lower(),
         HTTPMethod.PATCH.lower(),
         HTTPMethod.DELETE.lower(),

@@ -4,7 +4,7 @@ from django.db import models
 class TelegramUser(models.Model):
     """Telegram user model"""
 
-    telegram_id = models.CharField(unique=True, max_length=9)
+    telegram_id = models.CharField(unique=True)
     join_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

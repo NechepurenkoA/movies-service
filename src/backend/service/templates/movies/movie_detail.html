@@ -16,7 +16,7 @@
             <div class="col-md-4 mt-2">
                 <img id="movie-img-top" src="{{ movie.image }}" class="card-img-top img-fluid rounded-3 mb-2" alt=""
                     onerror="this.onerror=null;this.src='{% static "assets/images/fallback_image.png" %}';">
-                <div class="card shadow-lg rounded-3">
+                <div class="card shadow-sm rounded-3">
                     <div class="card-header">
                         <h5 class="card-title">{{ movie.title }}</h5>
                     </div>
@@ -44,7 +44,7 @@
 
             <!-- Right Column -->
             {% if reviews.results %}
-                <div class="col-md-8 shadow rounded-3">
+                <div class="col-md-8 shadow-sm rounded-3">
                     <div class="content flex-grow-1 mt-3" style="height: 41rem;">
                         {% for review in reviews.results %}
                             {% include "reviews/review.html" %}
@@ -54,10 +54,10 @@
                 </div>
             {% else %}
                 <div class="col-md-8 d-flex justify-content-center align-items-center rounded-3">
-                    <div class="container shadow-lg">
+                    <div class="container shadow-sm">
                         <p class="text-center fs-1">
                             No reviews here yet, you can be the first who rates! Become the part of the community! <br>
-                            <a class="link-offset-2" href="tg://resolve?domain=MovieReviewsBot">
+                            <a class="link-offset-2" href="tg://resolve?domain=reviewsonmoviesbot">
                                 Telegram Bot
                             </a>
                         </p>
